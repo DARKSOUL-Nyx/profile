@@ -1,0 +1,10 @@
+.products-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
