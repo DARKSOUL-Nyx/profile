@@ -1,19 +1,32 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
+import './App.css';
+import Scene from './components/Scene/Scene.js';
+import BlogPage from './pages/BlogPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 import NavBar from './components/NavBar/navBar.js';
 
 function App() {
   return (
     <div className="App" style={{ fontFamily: 'sans-serif', textAlign: 'center' }}>
+      <div className="scene-container">
+        <Scene />
+      </div>
+
       <NavBar />
-      <header>
-        <h1>My Developer Profile</h1>
-      </header>
       
-      {/* The main content is now managed by HomePage */}
-      <main style={{ maxWidth: '960px', margin: '0 auto', padding: '2rem' }}>
-        <HomePage />
+      <main className="content-container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* Add a route for Products when you create the page */}
+        </Routes>
+
       </main>
     </div>
   );

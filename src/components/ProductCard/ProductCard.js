@@ -1,12 +1,16 @@
 import React from 'react';
+import './ProductCard.css'; // We will create this CSS file next
 
-const ProductCard = ({ title, description, image, link }) => {
+const ProductCard = ({ name, description, imageUrl, link }) => {
   return (
-    <div style={{ border: '1px solid #ccc', padding: '1rem', margin: '1rem', borderRadius: '8px' }}>
-      <img src={image} alt={title} style={{ width: '100%', borderRadius: '4px' }} />
-      <h4>{title}</h4>
-      <p>{description}</p>
-      <a href={link} target="_blank" rel="noopener noreferrer">Learn More / Buy</a>
+    <div className="product-card">
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        <img src={imageUrl} alt={`${name} thumbnail`} className="product-image" />
+        <div className="product-info">
+          <h3>{name}</h3>
+          <p>{description}</p>
+        </div>
+      </a>
     </div>
   );
 };

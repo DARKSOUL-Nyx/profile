@@ -1,102 +1,461 @@
-/* General reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ============================================
+   STYLE 1: GLASSMORPHISM SPACE THEME (PRIMARY)
+   ============================================ */
 
 .navbar {
-  background: #222;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.navbar-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1000;
+  
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  
   display: flex;
   justify-content: space-between;
-  height: 60px;
-  z-index: 1;
+  align-items: center;
+  padding: 15px 30px;
+  
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.navbar:hover::before {
+  opacity: 1;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.navbar-logo a {
+  font-size: 1.8em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-logo a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.8);
+}
+
+.navbar-logo a:hover::after {
   width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
 }
 
-.navbar-logo {
-  color: #fff;
-  justify-self: flex-start;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.menu-icon {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-}
-
-.nav-menu {
+.navbar-links {
   display: flex;
-  align-items: center;
+  gap: 10px;
   list-style: none;
-  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-item {
-  height: 60px;
-}
-
-.nav-link {
-  color: #fff;
+.navbar-links li a {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  font-size: 1em;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
 }
 
-.nav-link:hover {
-  background: #444;
-  border-radius: 4px;
+/* Animated background on hover */
+.navbar-links li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, 
+    rgba(102, 126, 234, 0.3) 0%, 
+    rgba(118, 75, 162, 0.3) 100%);
+  transition: left 0.5s ease;
+  z-index: -1;
 }
 
-/* Mobile styles */
-@media screen and (max-width: 768px) {
-  .menu-icon {
-    display: block;
-  }
+.navbar-links li a:hover::before {
+  left: 0;
+}
 
-  .nav-menu {
-    display: flex;
+/* Glow effect on hover */
+.navbar-links li a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.6),
+              inset 0 0 20px rgba(102, 126, 234, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Active link style with NavLink */
+.navbar-links li a.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+  color: #fff;
+  box-shadow: 0 0 25px rgba(102, 126, 234, 0.8),
+              inset 0 0 15px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Ripple effect on click */
+.navbar-links li a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+}
+
+.navbar-links li a:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+}
+
+/* Floating particles effect */
+.navbar-links li a:hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(-3px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ============================================
+   STYLE 2: NEON CYBERPUNK VARIATION
+   ============================================ */
+
+.navbar.cyber {
+  background: rgba(10, 10, 30, 0.7);
+  border: 2px solid #0ff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4),
+              inset 0 0 30px rgba(0, 255, 255, 0.05);
+}
+
+.navbar.cyber .navbar-logo a {
+  color: #0ff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+  -webkit-text-fill-color: #0ff;
+}
+
+.navbar.cyber .navbar-links li a {
+  color: #0ff;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.navbar.cyber .navbar-links li a:hover {
+  border-color: #f0f;
+  color: #f0f;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.8),
+              inset 0 0 20px rgba(255, 0, 255, 0.2);
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+.navbar.cyber .navbar-links li a.active {
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 1),
+              inset 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* ============================================
+   STYLE 3: AURORA GRADIENT THEME
+   ============================================ */
+
+.navbar.aurora {
+  background: linear-gradient(135deg, 
+    rgba(30, 60, 114, 0.6) 0%, 
+    rgba(42, 82, 152, 0.6) 50%,
+    rgba(126, 34, 206, 0.6) 100%);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar.aurora::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(102, 126, 234, 0.3),
+    transparent
+  );
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.navbar.aurora .navbar-links li a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.8),
+              0 5px 20px rgba(118, 75, 162, 0.4);
+}
+
+/* ============================================
+   STYLE 4: MINIMAL ELEGANT THEME
+   ============================================ */
+
+.navbar.minimal {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  top: 0;
+  width: 100%;
+  max-width: none;
+  left: 0;
+  transform: none;
+  padding: 20px 60px;
+}
+
+.navbar.minimal .navbar-links li a {
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.navbar.minimal .navbar-links li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+.navbar.minimal .navbar-links li a:hover::before {
+  width: 100%;
+}
+
+.navbar.minimal .navbar-links li a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   STYLE 5: HOLOGRAPHIC THEME
+   ============================================ */
+
+.navbar.holo {
+  background: rgba(20, 20, 40, 0.6);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.navbar.holo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg, 
+    #ff0080, #ff8c00, #40e0d0, #6a5acd, #ff0080);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.navbar.holo .navbar-links li a {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.01));
+}
+
+.navbar.holo .navbar-links li a:hover {
+  background: linear-gradient(135deg,
+    rgba(102, 126, 234, 0.3),
+    rgba(118, 75, 162, 0.3));
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+  transform: translateY(-3px) scale(1.05);
+}
+
+.navbar.holo .navbar-links li a.active {
+  background: linear-gradient(135deg,
+    rgba(102, 126, 234, 0.5),
+    rgba(118, 75, 162, 0.5));
+  box-shadow: 0 0 40px rgba(102, 126, 234, 0.9);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .navbar {
+    width: 95%;
+    padding: 12px 20px;
     flex-direction: column;
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background: #222;
-    transition: height 0.3s ease-in-out;
+    gap: 15px;
   }
-
-  .nav-menu.active {
-    height: 250px; /* adjust if more/less links */
-  }
-
-  .nav-item {
-    width: 100%;
-  }
-
-  .nav-link {
+  
+  .navbar-links {
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 1.2rem;
-    width: 100%;
+    gap: 8px;
   }
+  
+  .navbar-links li a {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+}
+
+/* ============================================
+   ADDITIONAL HOVER MICRO-INTERACTIONS
+   ============================================ */
+
+/* Magnetic effect on hover */
+.navbar-links li a {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+/* Tooltip effect */
+.navbar-links li a:hover::before {
+  content: attr(title);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 5px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  opacity: 0;
+  animation: tooltipFade 0.3s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes tooltipFade {
+  to {
+    opacity: 1;
+    bottom: -40px;
+  }
+}
+
+/* Particle trail on hover */
+@keyframes particleTrail {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Pulse effect for active link */
+.navbar-links li a.active {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 1),
+                0 0 60px rgba(118, 75, 162, 0.6);
+  }
+}
+
+/* Smooth color transition on navigation */
+.navbar-links li a {
+  transition: color 0.3s ease,
+              background 0.4s ease,
+              transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.4s ease;
 }
