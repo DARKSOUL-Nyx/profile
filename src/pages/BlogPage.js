@@ -1,7 +1,7 @@
 import React from 'react';
-import { posts } from '../../data/blogPosts';
-import BlogPostCard from '../BlogPostCard/BlogPostCard.js';
-import './Blog.css';
+import { posts } from '../data/blogPosts';
+import BlogPostCard from '../components/BlogPostCard/BlogPostCard.js';
+import './BlogPage.css';
 
 const Blog = () => {
   return (

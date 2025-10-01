@@ -1,55 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom'; // 1. Import NavLink instead of Link
 import './navBar.css';
-import { FaBars } from 'react-icons/fa';
-import { IconContext } from 'react-icons';
 
 const NavBar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => {
-        setIsOpen(!isOpen);
-    };
-    return (
-        <IconContext.Provider value={{ color: '#fff' }}>
-            <nav className='navbar'>
-                <div className='navbar-container'>
-                    <Link to='/' className='navbar-logo'>
-                        VSS NISHWAN 
-                    </Link>
-                    <div className='menu-icon' onClick={toggle}>
-                        <FaBars />
-                    </div>  
-                    <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
-                        <li className='nav-item'>
-                            <Link to='/' className='nav-link' onClick={toggle}>
-                                Home
-                            </Link>
-                        </li>  
-                        <li className='nav-item'>
-                            <Link to='/about' className='nav-link' onClick={toggle}>
-                                About
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/blog' className='nav-link' onClick={toggle}>
-                                Blog
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/products' className='nav-link' onClick={toggle}>
-                                Products
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/contact' className='nav-link' onClick={toggle}>
-                                Contact
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </IconContext.Provider>
-    );
+  return (
+    <nav className="navbar holo">
+      <div className="navbar-logo">
+        <NavLink to="/">VSS NISHWAN </NavLink>
+      </div>
+      <ul className="navbar-links">
+        {/* 2. Use NavLink for all links */}
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
+        <li><NavLink to="/blog">Blog</NavLink></li>
+        <li><NavLink to="/contact">Contact</NavLink></li>
+      </ul>
+    </nav>
+  );
 };
 
 export default NavBar;
