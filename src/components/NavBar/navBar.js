@@ -6,15 +6,15 @@ const NavBar = () => {
   return (
     <nav className="navbar holo">
       <div className="navbar-logo">
-        <NavLink to="/">VSS NISHWAN </NavLink>
+        <NavLink to="/">DARK SOUL</NavLink>
       </div>
       <ul className="navbar-links">
         {/* 2. Use NavLink for all links */}
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/blog">Blog</NavLink></li>
+        <li><NavLink to="/about">Philosophy</NavLink></li>
+        <li><NavLink to="/blog">Laboratory</NavLink></li>
         <li><NavLink to="/contact">Contact</NavLink></li>
-        <li><NavLink to="/projects">Projects</NavLink></li>
+        <li><NavLink to="/projects">Featured Blueprints</NavLink></li>
       </ul>
     </nav>
   );
