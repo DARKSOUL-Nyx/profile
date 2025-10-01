@@ -6,7 +6,7 @@ import './BlogPage.css';
 const Blog = () => {
   return (
     <section className="blog-section">
-      <h2>My Blog</h2>
+      <h2>The Laboratory</h2>
       <div className="blog-posts-container">
         {posts.map(post => (
           <BlogPostCard key={post.id} {...post} />

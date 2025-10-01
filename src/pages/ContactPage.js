@@ -5,7 +5,7 @@ const AboutPage = () => {
   return (
     <div>
       {/* Your page content goes here */}
-      <h1>Contact Me</h1>
+      <h1>Hey Let's Connect!</h1>
       <p>This is my contact page.</p>
     </div>
   );
