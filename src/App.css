@@ -1,56 +1,71 @@
+/* --- Global Styles for Space Theme --- */
 .App {
-  text-align: center;
+    background-color: #1A1A24; /* Deep space black */
+    color: #E0E0FF; /* Light text color */
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    /* Use Inter font for a modern look */
+    font-family: 'Inter', sans-serif;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* SCENE CONTAINER (3D CANVAS) */
 .scene-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1; /* Place it behind the content */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Below the navigation and content */
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out; /* Smooth transition! */
 }
 
+.scene-container.hidden {
+    opacity: 0;
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+/* CONTENT CONTAINER (Where all pages sit) */
 .content-container {
-  position: relative; /* Allows content to sit on top */
-  z-index: 1;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem;
-  color: white; /* You may need to adjust text color for visibility */
+    position: relative;
+    z-index: 10; /* Above the 3D scene */
+    background: transparent; /* Allows scene to be visible behind content */
+}
+
+/* Detail Page specific container style for full readability */
+.detail-page-container {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(26, 26, 36, 0.95); /* Near-black background for readability */
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    min-height: 100vh;
+    /* This ensures the content itself scrolls over the hidden 3D scene */
+    overflow-y: auto; 
+}
+
+.detail-page-container h1 {
+    color: #4DB6AC; /* Teal accent */
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: #8C9EFF;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: #5C6BC0;
+}
+
+/* Ensure body doesn't have default margin */
+body {
+    margin: 0;
 }

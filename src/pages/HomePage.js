@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="homepage-container">
       <main className="content-container">
-        {/* <Profile /> */}
+        <Profile />
       </main>
     </div>
   );
