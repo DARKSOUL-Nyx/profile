@@ -1,26 +1,59 @@
-/* --- Global Styles for Space Theme --- */
+/* --- Global Styles for Space Theme ---
 .App {
-    background-color: #1A1A24; /* Deep space black */
-    color: #E0E0FF; /* Light text color */
+    background-color: #1A1A24;  Deep space black 
+    color: #E0E0FF; /* Light text color 
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    /* Use Inter font for a modern look */
+     Use Inter font for a modern look 
     font-family: 'Inter', sans-serif;
     text-align: center;
+} */
+
+.App {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.scene-container {
+  position: fixed; /* Lock the scene in place */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  z-index: -1; /* Place it behind all other content */
+}
+
+/* This overlay is crucial for text legibility */
+.scene-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(10, 10, 16, 0) 0%, rgba(10, 10, 16, 0.9) 80%, var(--color-background) 100%);
+}
+
+.content-container {
+  position: relative; /* Ensure it stacks on top of the scene */
+  z-index: 1;
+  width: 100%;
+  overflow-y: auto; /* Allow content to scroll */
 }
 
 /* SCENE CONTAINER (3D CANVAS) */
-.scene-container {
+/* .scene-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Below the navigation and content */
+    z-index: 1; /* Below the navigation and content 
     opacity: 1;
-    transition: opacity 0.8s ease-in-out; /* Smooth transition! */
-}
+    transition: opacity 0.8s ease-in-out; /* Smooth transition! 
+} */
 
 .scene-container.hidden {
     opacity: 0;
@@ -28,11 +61,11 @@
 }
 
 /* CONTENT CONTAINER (Where all pages sit) */
-.content-container {
+/* .content-container {
     position: relative;
-    z-index: 10; /* Above the 3D scene */
-    background: transparent; /* Allows scene to be visible behind content */
-}
+    z-index: 10; /* Above the 3D scene 
+    background: transparent; /* Allows scene to be visible behind content 
+} */
 
 /* Detail Page specific container style for full readability */
 .detail-page-container {

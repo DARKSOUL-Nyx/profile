@@ -1,10 +1,158 @@
+/* --- HOMEPAGE CONTAINER --- */
 .homepage-container {
-  position: relative;
+  opacity: 0;
+  transition: opacity 1.5s ease-in;
+}
+.homepage-container.loaded {
+  opacity: 1;
 }
 
-.content-container {
+/* --- SECTION BASE STYLES --- */
+.homepage-container section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-heading); /* Use heading font */
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--color-text-primary);
+  text-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
+}
+
+/* --- ACT I: HERO / MONOLITH --- */
+.hero-section {
+  text-align: center;
+}
+.hero-text h1 {
+  font-family: var(--font-body); /* Body font for the quote feels more personal */
+  font-size: 2.8rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+.hero-text h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 12px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* --- NEW, MORE DYNAMIC FADE-IN ANIMATIONS --- */
+.fade-in-1, .fade-in-2, .fade-in-3 {
+  opacity: 0;
+  transform: translate(0, 30px);
+  filter: blur(5px);
+}
+.loaded .fade-in-1 { animation: fadeInUp 1s ease-out 0.5s forwards; }
+.loaded .fade-in-2 { animation: fadeInUp 1s ease-out 1.0s forwards; }
+.loaded .fade-in-3 { animation: fadeInUp 1s ease-out 1.5s forwards; }
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+    filter: blur(0);
+  }
+}
+
+/* --- ACT II: CREED --- */
+.creed-section p {
+  font-size: 1.8rem;
+  line-height: 1.7;
+  text-align: center;
+  color: var(--color-text-secondary);
+  max-width: 900px;
+}
+
+/* --- ACT III: PILLARS (Glassmorphism Effect) --- */
+.pillars-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.pillar {
+  flex-basis: 30%;
+  min-width: 300px;
+  /* THE GLASS EFFECT */
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(10px); /* This creates the frost! */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  
+  padding: 2.5rem;
+  border-radius: 12px;
   position: relative;
-  z-index: 1;
-  /* background-color: rgba(255, 255, 255, 0.8); Make it semi-transparent */
-  padding: 2rem;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.pillar:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--color-primary);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+.pillar-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.pillar-content .pillar-quote {
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* --- ACT IV: GATEWAY --- */
+.gateway-section .section-title {
+  margin-bottom: 3rem;
+}
+.gateway-button {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background-color: transparent;
+  padding: 18px 45px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 2px solid var(--color-primary);
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.gateway-button:hover {
+  color: var(--color-background);
+  background-color: var(--color-primary);
+  box-shadow: 0 0 35px var(--color-primary);
+  transform: scale(1.05);
 }
