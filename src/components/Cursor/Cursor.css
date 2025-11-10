@@ -1,0 +1,27 @@
+/* src/components/Cursor/Cursor.css */
+.html-content {
+  cursor: none;
+}
+
+/* This is now the DEFAULT (Dark Theme) style */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: white; /* This inverts to black over white content */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10002;
+  mix-blend-mode: difference; /* The invert effect */
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, background-color 0.3s ease;
+}
+
+/* --- NEW: Light Theme Override --- */
+/* When this class is added, the cursor becomes a simple dark dot */
+.cursor-dot.light-theme {
+  mix-blend-mode: normal; /* Turn OFF the invert effect */
+  background-color: var(--color-text-primary); /* Use the dark text color */
+}

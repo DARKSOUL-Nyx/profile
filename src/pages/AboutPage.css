@@ -1,0 +1,132 @@
+.about-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: left; /* Override global center align for readability */
+  color: #E0E0FF;
+  position: relative;
+  z-index: 10;
+}
+
+.about-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.about-intro {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #8C9EFF; /* Blue accent */
+  max-width: 650px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.6;
+}
+
+.philosophy-subtitle {
+  font-size: 2rem;
+  color: #4DB6AC; /* Teal accent */
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #4DB6AC;
+  display: inline-block;
+}
+
+.philosophy-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.philosophy-content p strong {
+  color: #8C9EFF;
+  font-weight: 600;
+}
+
+/* --- Pillars Grid Layout --- */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pillar-card {
+  background-color: rgba(26, 26, 36, 0.7); /* Dark bg */
+  border: 1px solid #4DB6AC; /* Teal border */
+  padding: 2rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(77, 182, 172, 0.2); /* Teal glow */
+}
+
+.pillar-card h3 {
+  font-size: 1.4rem;
+  color: #8C9EFF; /* Blue accent */
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.pillar-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+  color: #E0E0FF;
+}
+
+/* --- Final CTA Section --- */
+.about-cta {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(140, 158, 255, 0.2); /* Faint blue line */
+}
+
+.about-cta-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --- Re-using Button Styles --- */
+/* (These are copied from HomePage.css for consistency) */
+.cta-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.cta-button.primary {
+  background-color: #8C9EFF;
+  color: #1A1A24;
+}
+
+.cta-button.primary:hover {
+  background-color: #5C6BC0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(140, 158, 255, 0.2);
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: #E0E0FF;
+  border-color: #8C9EFF;
+}
+
+.cta-button.secondary:hover {
+  background-color: rgba(140, 158, 255, 0.1);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}

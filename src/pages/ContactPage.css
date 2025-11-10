@@ -1,0 +1,188 @@
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 10;
+  color: #E0E0FF;
+}
+
+.contact-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contact-intro {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #8C9EFF; /* Blue accent */
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.6;
+}
+
+/* --- Social Links --- */
+.social-links-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.8rem; /* Icon size */
+  color: #4DB6AC; /* Teal accent */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #E0E0FF;
+}
+
+.social-link:hover {
+  color: #8C9EFF; /* Blue accent */
+  transform: translateY(-3px);
+}
+
+.social-link:hover span {
+  color: #FFFFFF;
+}
+
+/* --- Contact Form --- */
+.contact-form {
+  background-color: rgba(26, 26, 36, 0.7); /* Dark bg */
+  border: 1px solid #4DB6AC; /* Teal border */
+  padding: 2.5rem;
+  border-radius: 10px;
+}
+
+.form-title {
+  font-size: 1.8rem;
+  color: #FFFFFF;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #E0E0FF;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  background-color: #1A1A24; /* Deep space black */
+  border: 1px solid #4DB6AC;
+  border-radius: 6px;
+  box-sizing: border-box; /* Important for padding */
+  font-family: 'Inter', sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #8C9EFF;
+  box-shadow: 0 0 10px rgba(140, 158, 255, 0.3);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+/* --- Re-using Button Style --- */
+.contact-form .cta-button.primary {
+  background-color: #8C9EFF;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  color: #1A1A24;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background-color: #8C9EFF;
+  color: #1A1A24;
+}
+
+.cta-button.primary:hover {
+  background-color: #5C6BC0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(140, 158, 255, 0.2);
+}
+
+
+/* --- ADD THESE NEW STYLES to the end of ContactPage.css --- */
+
+.radio-pill-group {
+  display: flex;
+  flex-wrap: wrap; /* Allows pills to wrap on small screens */
+  gap: 0.75rem;
+  margin-top: 0.5rem; /* Space from the label */
+}
+
+.radio-pill-label {
+  cursor: pointer;
+}
+
+/* Hide the actual radio button */
+.radio-pill-label input[type="radio"] {
+  display: none;
+}
+
+/* Style the 'span' as the clickable pill button */
+.radio-pill-label span {
+  display: block;
+  padding: 0.6rem 1rem;
+  border: 1px solid #4DB6AC; /* Teal border */
+  border-radius: 20px; /* Pill shape */
+  font-size: 0.9rem;
+  color: #E0E0FF;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+  -webkit-user-select: none; /* Prevents text selection on click */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Style for the pill on hover */
+.radio-pill-label span:hover {
+  background-color: rgba(77, 182, 172, 0.2); /* Teal glow */
+  color: #FFFFFF;
+}
+
+/* Style for the pill WHEN SELECTED */
+.radio-pill-label input[type="radio"]:checked + span {
+  background-color: #4DB6AC; /* Solid teal */
+  color: #1A1A24; /* Dark text */
+  font-weight: 500;
+  border-color: #4DB6AC;
+}

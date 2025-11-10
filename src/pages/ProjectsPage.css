@@ -1,36 +1,70 @@
-.products-page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6rem 2rem 4rem;
-    text-align: center;
-    color: #E0E0FF;
-    min-height: 100vh;
+/* src/pages/ProjectsPage.css */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 10;
+  color: #E0E0FF;
 }
 
-.products-page-container h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #8C9EFF;
-    text-shadow: 0 0 10px rgba(140, 158, 255, 0.5);
+.projects-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.products-page-container p {
-    font-size: 1.25rem;
-    margin-bottom: 4rem;
-    color: #BDBDE7;
+.projects-intro {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #8C9EFF; /* Blue accent */
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.6;
 }
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 0 1rem;
+/* --- Filter Bar --- */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .products-page-container h1 {
-        font-size: 2.5rem;
-    }
+.filter-pill {
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  border: 1px solid #4DB6AC;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #E0E0FF;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.filter-pill:hover {
+  background-color: rgba(77, 182, 172, 0.2);
+  color: #FFFFFF;
+}
+
+.filter-pill.active {
+  background-color: #4DB6AC;
+  color: #1A1A24;
+  border-color: #4DB6AC;
+}
+
+/* --- Project Grid --- */
+.project-grid {
+  display: grid;
+  /* Creates a responsive grid: 
+     - Tries to fit as many 350px cards as it can
+     - If it can't, it makes them 1fr (100% wide)
+  */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
 }

@@ -1,0 +1,103 @@
+/* src/components/ProjectCard/ProjectCard.css */
+.project-card {
+  background-color: rgba(26, 26, 36, 0.7); /* Dark bg */
+  border: 1px solid #4DB6AC; /* Teal border */
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes footer to bottom */
+  transition: all 0.3s ease;
+  height: 100%; /* Makes cards in a grid row the same height */
+  box-sizing: border-box; /* Ensures padding doesn't break layout */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(77, 182, 172, 0.2); /* Teal glow */
+  border-color: #8C9EFF;
+}
+
+.card-header {
+  flex-grow: 1; /* Allows this to grow and fill space */
+}
+
+.repo-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.repo-name:hover {
+  color: #8C9EFF;
+  text-decoration: underline;
+}
+
+.repo-description {
+  font-size: 0.95rem;
+  color: #E0E0FF;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.card-footer {
+  margin-top: auto; /* Pushes this to the bottom */
+}
+
+.repo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #E0E0FF;
+  margin-bottom: 1rem;
+}
+
+.repo-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.repo-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(140, 158, 255, 0.1); /* Faint blue line */
+  padding-top: 1rem;
+}
+
+.repo-topic-tag {
+  font-size: 0.75rem;
+  background-color: rgba(140, 158, 255, 0.1);
+  color: #8C9EFF;
+  padding: 0.25rem 0.6rem;
+  border-radius: 15px;
+  font-weight: 500;
+}
+
+
+.case-study-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 1.5rem; /* Space above */
+  border: 1px solid #8C9EFF; /* Blue accent */
+  background-color: transparent;
+  color: #8C9EFF;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.case-study-button:hover {
+  background-color: rgba(140, 158, 255, 0.1); /* Light blue hover */
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}

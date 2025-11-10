@@ -1,158 +1,133 @@
-/* --- HOMEPAGE CONTAINER --- */
+/* Styles for the new HomePage.js */
+
 .homepage-container {
-  opacity: 0;
-  transition: opacity 1.5s ease-in;
-}
-.homepage-container.loaded {
-  opacity: 1;
+  max-width: 1000px;
+  margin: 0 auto; /* Centers the content */
+  padding: 4rem 2rem; /* Spacing from top/bottom and sides */
+  text-align: left; /* Overrides the global 'text-align: center' for articles */
+  z-index: 10;
+  position: relative;
 }
 
-/* --- SECTION BASE STYLES --- */
-.homepage-container section {
-  min-height: 100vh;
+/* --- Section 1: Hero --- */
+.hero-section {
+  min-height: 70vh; /* Takes up a good portion of the viewport */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 5rem 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  align-items: flex-start; /* Aligns text to the left */
+  margin-bottom: 6rem; /* Space before the next section */
+}
+
+.hero-headline {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #FFFFFF; /* Bright white */
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #4DB6AC; /* Teal accent from App.css */
+  margin-bottom: 1.5rem;
+}
+
+.hero-intro {
+  font-size: 1.15rem;
+  color: #E0E0FF; /* Light text color from App.css */
+  max-width: 650px; /* Keeps the intro line length readable */
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Allows buttons to stack on small screens */
+  gap: 1rem;
+}
+
+.cta-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.cta-button.primary {
+  background-color: #8C9EFF; /* Blue accent from App.css */
+  color: #1A1A24; /* Dark background color */
+}
+
+.cta-button.primary:hover {
+  background-color: #5C6BC0; /* Darker blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(140, 158, 255, 0.2);
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: #E0E0FF;
+  border-color: #8C9EFF;
+}
+
+.cta-button.secondary:hover {
+  background-color: rgba(140, 158, 255, 0.1); /* Light blue hover */
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+
+/* --- Section 2: Philosophy --- */
+.philosophy-section {
+  margin-bottom: 6rem;
 }
 
 .section-title {
-  font-family: var(--font-heading); /* Use heading font */
-  font-size: 3rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 4rem;
-  color: var(--color-text-primary);
-  text-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
-}
-
-/* --- ACT I: HERO / MONOLITH --- */
-.hero-section {
-  text-align: center;
-}
-.hero-text h1 {
-  font-family: var(--font-body); /* Body font for the quote feels more personal */
-  font-size: 2.8rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
+  font-size: 2.2rem;
+  color: #4DB6AC; /* Teal accent */
   margin-bottom: 2rem;
-  line-height: 1.4;
-}
-.hero-text h2 {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: 12px;
-  color: var(--color-primary);
-  text-transform: uppercase;
-}
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--color-text-secondary);
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  animation: pulse 2.5s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #4DB6AC;
+  display: inline-block; /* Makes border fit content */
 }
 
-/* --- NEW, MORE DYNAMIC FADE-IN ANIMATIONS --- */
-.fade-in-1, .fade-in-2, .fade-in-3 {
-  opacity: 0;
-  transform: translate(0, 30px);
-  filter: blur(5px);
-}
-.loaded .fade-in-1 { animation: fadeInUp 1s ease-out 0.5s forwards; }
-.loaded .fade-in-2 { animation: fadeInUp 1s ease-out 1.0s forwards; }
-.loaded .fade-in-3 { animation: fadeInUp 1s ease-out 1.5s forwards; }
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translate(0, 0);
-    filter: blur(0);
-  }
-}
-
-/* --- ACT II: CREED --- */
-.creed-section p {
-  font-size: 1.8rem;
-  line-height: 1.7;
-  text-align: center;
-  color: var(--color-text-secondary);
-  max-width: 900px;
-}
-
-/* --- ACT III: PILLARS (Glassmorphism Effect) --- */
-.pillars-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-}
-.pillar {
-  flex-basis: 30%;
-  min-width: 300px;
-  /* THE GLASS EFFECT */
-  background: var(--color-glass-bg);
-  border: 1px solid var(--color-glass-border);
-  backdrop-filter: blur(10px); /* This creates the frost! */
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
-  
-  padding: 2.5rem;
-  border-radius: 12px;
-  position: relative;
-  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-}
-.pillar:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: var(--color-primary);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-}
-.pillar-content h3 {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  color: var(--color-primary);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-.pillar-content .pillar-quote {
+.philosophy-content p {
   font-size: 1.1rem;
-  color: var(--color-text-primary);
+  color: #E0E0FF;
   line-height: 1.7;
-  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 800px; /* Good for readability */
 }
 
-/* --- ACT IV: GATEWAY --- */
-.gateway-section .section-title {
-  margin-bottom: 3rem;
+.philosophy-content strong {
+  color: #8C9EFF; /* Blue accent for emphasis */
+  font-weight: 600;
 }
-.gateway-button {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  background-color: transparent;
-  padding: 18px 45px;
-  border-radius: 50px;
-  text-decoration: none;
-  border: 2px solid var(--color-primary);
-  transition: all 0.3s ease;
-  position: relative;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+
+
+/* --- Section 3: Next Steps (Link to Showcase) --- */
+.next-steps-section {
+  text-align: center; /* Center this final call to action */
+  background-color: rgba(26, 26, 36, 0.7); /* Darker, semi-transparent bg */
+  padding: 4rem 2rem;
+  border-radius: 10px;
+  border: 1px solid #4DB6AC;
 }
-.gateway-button:hover {
-  color: var(--color-background);
-  background-color: var(--color-primary);
-  box-shadow: 0 0 35px var(--color-primary);
-  transform: scale(1.05);
+
+.next-steps-section .section-title {
+  border-bottom: none; /* No border for this title */
+}
+
+.next-steps-section p {
+  font-size: 1.15rem;
+  color: #E0E0FF;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto 2rem auto; /* Center text and add bottom margin */
 }
